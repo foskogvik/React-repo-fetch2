@@ -1,27 +1,28 @@
 {
-  "name": "react-tutorial",
+  "name": "react-boilerplate",
   "version": "1.0.0",
-  "description": "",
-  "author": "",
+  "description": "Personal boilerplate for React projects",
+  "author": "Fredrik Skogvik",
   "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
+    "dev": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production"
   },
-  "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/preset-react": "^7.10.4",
-    "babel-loader": "^8.1.0",
-    "html-webpack-plugin": "^4.5.0",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
-  },
   "dependencies": {
-    "@babel/polyfill": "^7.11.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "webpack-dev-server": "^3.11.0"
+    "core-js": "^3.6.5",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "7.11.6",
+    "@babel/preset-env": "7.11.5",
+    "@babel/preset-react": "7.10.4",
+    "babel-loader": "8.1.0",
+    "html-webpack-plugin": "4.5.0",
+    "webpack": "4.44.2",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.0"
   }
 }

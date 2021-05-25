@@ -1,32 +1,39 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
-  entry: './src/index.js',
+  mode: "development",
+  entry: "./src/app.js",
   output: {
-    path: path.join(__dirname, './dist'),
-    filename: 'index_bundle.js'
+    path: path.join(__dirname, "public"),
+    filename: "bundle.js",
   },
-
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      }
-    ]
+            plugins: ["@babel/plugin-proposal-class-properties"],
+          },
+        },
+      },
+      {
+        test: /\.s?css$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+    ],
+  },
+  devtool: "eval-cheap-module-source-map",
+  devServer: {
+    contentBase: path.join(__dirname, "public"),
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-      favicon: 'favicon.ico'
-    })
-  ]
+      template: "./src/index.html",
+      favicon: "favicon.ico",
+    }),
+  ],
 };
