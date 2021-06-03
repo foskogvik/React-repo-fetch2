@@ -5,11 +5,11 @@ import Header from "../layout/Header";
 import { GlobalStyle } from "../GlobalStyle";
 
 const RepoFetchApp = () => {
-  // state
   const [fetchedRepos, setFetchedRepos] = useState(() => []);
   const [isLoading, setIsLoading] = useState(() => true);
   const [currentPage, setCurrentPage] = useState(() => 1);
   const [reposPerPage, setReposPerPage] = useState(() => 20);
+  const [error, setError] = useState(null);
 
   // fetching start
   useEffect(() => {
@@ -18,7 +18,7 @@ const RepoFetchApp = () => {
     )
       .then((response) => {
         if (!response.ok) {
-          throw new console.error("Failed fetch");
+          throw Error("Could not fetch data, check resource URL");
         }
         return response.json();
       })
@@ -35,7 +35,7 @@ const RepoFetchApp = () => {
         setFetchedRepos(repoArray);
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.message);
       });
   }, []);
 
@@ -61,7 +61,7 @@ const RepoFetchApp = () => {
     <>
       <GlobalStyle />
       <Header changeDisplayAmount={changeDisplayAmount} />
-      <Table repos={currentRepos} loading={isLoading} />
+      <Table error={error} repos={currentRepos} loading={isLoading} />
       <Pagination
         reposPerPage={reposPerPage}
         totalRepos={fetchedRepos.length}

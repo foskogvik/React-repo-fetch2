@@ -1,10 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
+
 const Table = (props) => {
-  if (props.loading) {
-    // Add spinner graphic?
-    return <h2>Getting data from API</h2>;
+  if (props.error) {
+    return <ErrorMessage>{props.error}</ErrorMessage>;
+  } else if (props.loading) {
+    return (
+      <LoaderContainer>
+        <Loader
+          type='ThreeDots'
+          color='#00BFFF'
+          height={100}
+          width={100}
+          timeout={3000}
+        />
+      </LoaderContainer>
+    );
   }
 
   return (
@@ -80,4 +94,15 @@ const RepoImage = styled.img`
 
 const TitleCol = styled.td`
   font-size: 1.2rem;
+`;
+
+const ErrorMessage = styled.h2`
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+`;
+
+const LoaderContainer = styled.div`
+  display: grid;
+  place-items: center;
 `;

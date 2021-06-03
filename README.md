@@ -4,10 +4,9 @@
 
 **Review codebase to remember how it works.**
 **Setup variable fetch amount.**
+**Make proper error message.**
 Improve design and rewrite css for it.
 MAKE IT RESPONSIVE!!
-Setup theme switcher (dark/light).
-Make proper error message
 
 Setup hosting at vercel.
 
