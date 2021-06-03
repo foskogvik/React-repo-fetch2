@@ -1,11 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 
-const Header = () => (
-  <StyledHeader>
-    <Title>Github Repo Table</Title>
-  </StyledHeader>
-);
+const Header = (props) => {
+  const onChangeHandler = (e) => {
+    props.changeDisplayAmount(parseInt(e.target.value));
+  };
+
+  return (
+    <StyledHeader>
+      <Title>Github Repo Table</Title>
+      <label htmlFor='reposPerPage'>Repos per page</label>
+      <select name='reposPerPage' onChange={onChangeHandler}>
+        <option value='20'>20</option>
+        <option value='40'>40</option>
+        <option value='60'>60</option>
+        <option value='80'>80</option>
+        <option value='100'>100</option>
+      </select>
+    </StyledHeader>
+  );
+};
 
 const StyledHeader = styled.header`
   display: flex;

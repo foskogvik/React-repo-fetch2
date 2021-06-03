@@ -5,7 +5,7 @@ import Header from "../layout/Header";
 import { GlobalStyle } from "../GlobalStyle";
 
 const RepoFetchApp = () => {
-  // defining state.
+  // state
   const [fetchedRepos, setFetchedRepos] = useState(() => []);
   const [isLoading, setIsLoading] = useState(() => true);
   const [currentPage, setCurrentPage] = useState(() => 1);
@@ -53,16 +53,14 @@ const RepoFetchApp = () => {
     setCurrentPage(pageNumber);
   };
 
-  const changeFetchAmount = () => {
-    setReposPerPage(100);
-    console.log(reposPerPage);
+  const changeDisplayAmount = (displayAmount) => {
+    setReposPerPage(displayAmount);
   };
 
   return (
     <>
       <GlobalStyle />
-      <button onClick={changeFetchAmount}>changeFetchAmount</button>
-      <Header />
+      <Header changeDisplayAmount={changeDisplayAmount} />
       <Table repos={currentRepos} loading={isLoading} />
       <Pagination
         reposPerPage={reposPerPage}
