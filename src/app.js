@@ -2,6 +2,8 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App.js";
 
-ReactDOM.render(<App />, document.getElementById("app"));
+import "normalize.css/normalize.css";
+import RepoFetchApp from "./components/RepoFetchApp";
+
+ReactDOM.render(<RepoFetchApp />, document.getElementById("app"));

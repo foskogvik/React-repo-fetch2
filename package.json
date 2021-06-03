@@ -1,18 +1,23 @@
 {
-  "name": "react-boilerplate",
-  "version": "1.0.0",
-  "description": "Personal boilerplate for React projects",
+  "name": "react-repo-fetcher-2",
+  "version": "2.0.0",
+  "description": "A react app that fetches repos from github and renders them in a table.",
   "author": "Fredrik Skogvik",
   "license": "ISC",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "dev": "webpack serve",
+    "build": "webpack"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "css-loader": "^5.2.6",
+    "normalize.css": "^8.0.1",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "sass-loader": "^11.1.1",
+    "style-loader": "^2.0.0",
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.14",
@@ -20,9 +25,9 @@
     "@babel/preset-env": "7.11.5",
     "@babel/preset-react": "7.10.4",
     "babel-loader": "8.1.0",
-    "html-webpack-plugin": "4.5.0",
-    "webpack": "4.44.2",
-    "webpack-cli": "3.3.12",
-    "webpack-dev-server": "3.11.0"
+    "babel-plugin-styled-components": "^1.12.0",
+    "webpack": "^5.31.0",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "3.11.2"
   }
 }

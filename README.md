@@ -1,7 +1,17 @@
-# React_Boilerplate
+# React_Repo_Fetcher v2
 
-React + Babel + Webpack setup for React projects without create-react-app.
+#TODO:
 
-NB!: unsafe messages from npm are a result of a dependency on react-dev-server. Waiting for resolution.
+**Review codebase to remember how it works.**
+Setup variable fetch amount.
+Improve design and rewrite css for it.
+MAKE IT RESPONSIVE!!
+Setup theme switcher (dark/light).
+Make proper error message
 
-TODO: understand and setup chunking and lazy loading.
+Setup hosting at vercel.
+
+#DONE:
+
+basic conversion to styled-components
+port from create-react-app to webpack

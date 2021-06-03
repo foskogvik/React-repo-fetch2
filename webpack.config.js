@@ -1,5 +1,4 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -16,13 +15,16 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            plugins: ["@babel/plugin-proposal-class-properties"],
+            plugins: [
+              "@babel/plugin-proposal-class-properties",
+              "babel-plugin-styled-components",
+            ],
           },
         },
       },
       {
         test: /\.s?css$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
@@ -30,10 +32,4 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "public"),
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      favicon: "favicon.ico",
-    }),
-  ],
 };
