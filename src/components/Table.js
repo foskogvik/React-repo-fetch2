@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+
+import { colors, fontSize, spacings } from "../variables";
 
 const Table = (props) => {
   if (props.error) {
@@ -12,7 +13,7 @@ const Table = (props) => {
       <LoaderContainer>
         <Loader
           type='ThreeDots'
-          color='#00BFFF'
+          color={colors.green}
           height={100}
           width={100}
           timeout={3000}
@@ -23,24 +24,29 @@ const Table = (props) => {
 
   return (
     <StyledTable>
-      <StyledTableHead>
+      <TableHeading>
         <TableRow>
-          <FirstTableHead>Owner</FirstTableHead>
-          <TableHead>Name</TableHead>
-          <TableHead>Description</TableHead>
-          <TableHead>Stars</TableHead>
+          <TableHeadingCell>Owner</TableHeadingCell>
+          <TableHeadingCell>Name</TableHeadingCell>
+          <TableHeadingCell>Description</TableHeadingCell>
+          <TableHeadingCell>Stars</TableHeadingCell>
         </TableRow>
-      </StyledTableHead>
+      </TableHeading>
       <TableBody>
         {props.repos.map((repo) => (
           <TableRow key={repo.id}>
-            <OwnerCol>
-              <RepoImage src={repo.avatar} alt='owner avatar'></RepoImage>
-              <p>{repo.owner}</p>
-            </OwnerCol>
-            <TitleCol className='title-col'>{repo.name}</TitleCol>
-            <TitleCol>{repo.description}</TitleCol>
-            <TitleCol>{repo.stargazers}</TitleCol>
+            <RepoOwnerCell>
+              <RepoOwnerImage
+                src={repo.avatar}
+                alt='owner avatar'
+              ></RepoOwnerImage>
+              <RepoOwnerName target='_blank' href={repo.ownerUrl}>
+                {repo.owner}
+              </RepoOwnerName>
+            </RepoOwnerCell>
+            <RepoDataCell>{repo.name}</RepoDataCell>
+            <RepoDataCell>{repo.description}</RepoDataCell>
+            <RepoDataCell>{repo.stargazers}</RepoDataCell>
           </TableRow>
         ))}
       </TableBody>
@@ -51,55 +57,60 @@ export default Table;
 
 const StyledTable = styled.table`
   border-collapse: collapse;
-  color: white;
-  width: 100%;
+  color: ${colors.white};
 `;
 
-const StyledTableHead = styled.thead`
-  font-size: 1.2rem;
-  background-color: #3a5683;
+const TableHeading = styled.thead`
+  background-color: ${colors.teal};
+  font-size: ${fontSize.md};
   text-align: left;
 `;
 
 const TableRow = styled.tr`
-  border-bottom: 1px solid #286f58;
+  border-bottom: 1px solid ${colors.darkTeal};
 `;
 
-const TableHead = styled.th`
-  padding: 20px 12px;
-`;
-
-const FirstTableHead = styled.th`
-  text-align: center;
+const TableHeadingCell = styled.th`
+  padding: ${spacings.md};
 `;
 
 const TableBody = styled.tbody`
-  background-color: #639a88;
-  width: 100vw;
+  background-color: ${colors.green};
 `;
 
-const OwnerCol = styled.td`
-  padding: 22px 12px;
+const RepoOwnerCell = styled.td`
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin: ${spacings.sm} 0;
   text-align: center;
 `;
 
-const RepoImage = styled.img`
-  height: 50px;
-  width: 50px;
-  margin-bottom: 3px;
+const RepoOwnerImage = styled.img`
+  height: 5rem;
+  width: 5rem;
 `;
 
-const TitleCol = styled.td`
-  font-size: 1.2rem;
+const RepoOwnerName = styled.a`
+  color: ${colors.white};
+  font-size: ${fontSize.sm};
+  margin: ${spacings.sm};
+  text-decoration: underline;
+
+  &:hover {
+    color: ${colors.teal};
+  }
+`;
+
+const RepoDataCell = styled.td`
+  font-size: ${fontSize.sm};
+  padding: 0 ${spacings.md};
 `;
 
 const ErrorMessage = styled.h2`
-  text-align: center;
-  font-size: 2.5rem;
+  font-size: ${fontSize.xl};
   font-weight: bold;
+  text-align: center;
 `;
 
 const LoaderContainer = styled.div`

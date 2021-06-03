@@ -27,6 +27,7 @@ const RepoFetchApp = () => {
           id: repo.id,
           name: repo.name,
           owner: repo.owner.login,
+          ownerUrl: repo.owner.html_url,
           avatar: repo.owner.avatar_url,
           description: repo.description,
           stargazers: repo.stargazers_count,
@@ -62,12 +63,15 @@ const RepoFetchApp = () => {
       <GlobalStyle />
       <Header changeDisplayAmount={changeDisplayAmount} />
       <Table error={error} repos={currentRepos} loading={isLoading} />
-      <Pagination
-        reposPerPage={reposPerPage}
-        totalRepos={fetchedRepos.length}
-        paginate={paginate}
-        currentPage={currentPage}
-      />
+      {!isLoading && (
+        <Pagination
+          reposPerPage={reposPerPage}
+          totalRepos={fetchedRepos.length}
+          paginate={paginate}
+          currentPage={currentPage}
+          loading={isLoading}
+        />
+      )}
     </>
   );
 };

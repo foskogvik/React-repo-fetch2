@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { colors, fontSize, spacings } from "../variables";
 
 const Pagination = (props) => {
   const pageNumbers = [];
@@ -10,53 +11,59 @@ const Pagination = (props) => {
   }
 
   return (
-    <NavWrapper>
-      <UList>
+    <Navigation>
+      <NavigationList>
         {pageNumbers.map((number) => (
-          <ListItem key={number}>
-            <Button
+          <NavigationListItem key={number}>
+            <NavigationButton
               active={number === props.currentPage}
               onClick={() => props.paginate(number)}
             >
               {number}
-            </Button>
-          </ListItem>
+            </NavigationButton>
+          </NavigationListItem>
         ))}
-      </UList>
-    </NavWrapper>
+      </NavigationList>
+    </Navigation>
   );
 };
 
-const NavWrapper = styled.nav``;
-
-const UList = styled.ul`
-  margin: 5px 0px;
-  display: flex;
-  list-style: none;
-  justify-content: center;
+const Navigation = styled.nav`
+  background-color: ${colors.darkBlue};
+  height: 6rem;
+  padding: ${spacings.md};
 `;
 
-const ListItem = styled.li``;
+const NavigationList = styled.ul`
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+`;
 
-const Button = styled.button`
-  margin: 0px 5px;
-  height: 75px;
-  width: 75px;
-  font-size: 1.5rem;
-  color: white;
-  background-color: #76b041;
+const NavigationListItem = styled.li`
+  margin: ${spacings.sm};
+`;
+
+const NavigationButton = styled.button`
+  background-color: ${colors.lightGreen};
   border: none;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.75);
+  border-radius: 5%;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.75);
+  color: ${colors.white};
+  font-size: ${fontSize.md};
+  height: 4.5rem;
+  width: 4.5rem;
 
   &:hover {
-    background-color: #3a5683;
+    background-color: ${colors.teal};
     cursor: pointer;
   }
 
   ${({ active }) =>
     active &&
     `
-    background-color: #3a5683
+    background-color: ${colors.teal}
   `}
 `;
 
