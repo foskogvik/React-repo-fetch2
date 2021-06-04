@@ -9,6 +9,7 @@ export const colors = {
 };
 
 export const fontSize = {
+  xs: "0.9rem",
   sm: "1.2rem",
   md: "1.4rem",
   lg: "2rem",

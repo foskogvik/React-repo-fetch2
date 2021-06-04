@@ -39,6 +39,7 @@ const NavigationList = styled.ul`
   justify-content: center;
   list-style: none;
   margin: 0;
+  padding: 0;
 `;
 
 const NavigationListItem = styled.li`
@@ -58,6 +59,11 @@ const NavigationButton = styled.button`
   &:hover {
     background-color: ${colors.teal};
     cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    height: 3rem;
+    width: 3rem;
   }
 
   ${({ active }) =>

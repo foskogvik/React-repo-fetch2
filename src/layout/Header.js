@@ -32,13 +32,22 @@ const StyledHeader = styled.header`
   display: flex;
   height: 6rem;
   justify-content: center;
-  max-width: 100%;
-  position: relative;
+  width: 100%;
+  position: sticky;
+
+  @media (max-width: 768px) {
+    justify-content: left;
+    padding-left: ${spacings.sm};
+  }
 `;
 
 const Title = styled.h1`
   font-size: ${fontSize.xl};
   text-shadow: 2px 2px 2px black;
+
+  @media (max-width: 768px) {
+    font-size: ${fontSize.lg};
+  }
 `;
 
 const DropDownContainer = styled.div`
@@ -52,12 +61,20 @@ const DropDown = styled.select`
   align-self: center;
   font-size: ${fontSize.sm};
   width: 50%;
+
+  @media (max-width: 768px) {
+    font-size: ${fontSize.xs};
+  }
 `;
 
 const DropDownLabel = styled.label`
   font-size: ${fontSize.md};
   padding-bottom: ${spacings.sm};
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: ${fontSize.sm};
+  }
 `;
 
 export default Header;

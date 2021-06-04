@@ -45,7 +45,7 @@ const Table = (props) => {
               </RepoOwnerName>
             </RepoOwnerCell>
             <RepoDataCell>{repo.name}</RepoDataCell>
-            <RepoDataCell>{repo.description}</RepoDataCell>
+            <RepoDataCellDesc>{repo.description}</RepoDataCellDesc>
             <RepoDataCell>{repo.stargazers}</RepoDataCell>
           </TableRow>
         ))}
@@ -58,12 +58,17 @@ export default Table;
 const StyledTable = styled.table`
   border-collapse: collapse;
   color: ${colors.white};
+  width: 100%;
 `;
 
 const TableHeading = styled.thead`
   background-color: ${colors.teal};
   font-size: ${fontSize.md};
   text-align: left;
+
+  @media (max-width: 768px) {
+    font-size: ${fontSize.xs};
+  }
 `;
 
 const TableRow = styled.tr`
@@ -89,6 +94,11 @@ const RepoOwnerCell = styled.td`
 const RepoOwnerImage = styled.img`
   height: 5rem;
   width: 5rem;
+
+  @media (max-width: 768px) {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
 `;
 
 const RepoOwnerName = styled.a`
@@ -100,11 +110,30 @@ const RepoOwnerName = styled.a`
   &:hover {
     color: ${colors.teal};
   }
+
+  @media (max-width: 768px) {
+    font-size: ${fontSize.xs};
+  }
 `;
 
 const RepoDataCell = styled.td`
   font-size: ${fontSize.sm};
   padding: 0 ${spacings.md};
+
+  @media (max-width: 768px) {
+    font-size: ${fontSize.xs};
+    padding: 0;
+  }
+`;
+
+const RepoDataCellDesc = styled.td`
+  font-size: ${fontSize.sm};
+  padding: 0 ${spacings.md};
+
+  @media (max-width: 768px) {
+    font-size: ${fontSize.xs};
+    padding: 0;
+  }
 `;
 
 const ErrorMessage = styled.h2`

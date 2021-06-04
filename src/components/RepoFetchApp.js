@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Table from "./Table";
 import Pagination from "./Pagination";
 import Header from "../layout/Header";
+import styled from "styled-components";
 import { GlobalStyle } from "../GlobalStyle";
 
 const RepoFetchApp = () => {
@@ -59,7 +60,7 @@ const RepoFetchApp = () => {
   };
 
   return (
-    <>
+    <Wrapper>
       <GlobalStyle />
       <Header changeDisplayAmount={changeDisplayAmount} />
       <Table error={error} repos={currentRepos} loading={isLoading} />
@@ -72,8 +73,12 @@ const RepoFetchApp = () => {
           loading={isLoading}
         />
       )}
-    </>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  width: 100vw;
+`;
 
 export default RepoFetchApp;
