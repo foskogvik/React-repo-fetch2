@@ -1,17 +1,11 @@
 # React_Repo_Fetcher v2
 
-#TODO:
+Hosted at vercel: https://react-repo-fetch2.vercel.app/
 
-MAKE IT RESPONSIVE!!
-DEBUG REPOS PER PAGE FUNCTION
+React app that fetches the top 100 repos from github and renders them in a table.
+Built with React with hooks, webpack and styled components.
 
-Setup hosting at vercel.
+Known issues:
+Changing repos per page on other pages then 1 gets weird.
+Various responsive issues. Hard to work out because of tables.
 
-#DONE:
-
-basic conversion to styled-components
-port from create-react-app to webpack
-**Review codebase to remember how it works.**
-**Setup variable fetch amount.**
-**Make proper error message.**
-**Improve design and rewrite css for it.**
