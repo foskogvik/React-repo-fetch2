@@ -56,6 +56,7 @@ const RepoFetchApp = () => {
   };
 
   const changeDisplayAmount = (displayAmount) => {
+    setCurrentPage(1);
     setReposPerPage(displayAmount);
   };
 
@@ -78,7 +79,7 @@ const RepoFetchApp = () => {
 };
 
 const Wrapper = styled.div`
-  width: 100vw;
+  width: 100%;
 `;
 
 export default RepoFetchApp;
