@@ -5,10 +5,10 @@ import Loader from "react-loader-spinner";
 
 import { colors, fontSize, spacings } from "../variables";
 
-const Table = (props) => {
-  if (props.error) {
-    return <ErrorMessage>{props.error}</ErrorMessage>;
-  } else if (props.loading) {
+const Table = ({ error, loading, repos }) => {
+  if (error) {
+    return <ErrorMessage>{error}</ErrorMessage>;
+  } else if (loading) {
     return (
       <LoaderContainer>
         <Loader
@@ -33,7 +33,7 @@ const Table = (props) => {
         </TableRow>
       </TableHeading>
       <TableBody>
-        {props.repos.map((repo) => (
+        {repos.map((repo) => (
           <TableRow key={repo.id}>
             <RepoOwnerCell>
               <RepoOwnerImage

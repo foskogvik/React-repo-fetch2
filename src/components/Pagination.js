@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { colors, fontSize, spacings } from "../variables";
 
-const Pagination = (props) => {
+const Pagination = ({ totalRepos, reposPerPage, currentPage, paginate }) => {
   const pageNumbers = [];
-  const pageCount = Math.ceil(props.totalRepos / props.reposPerPage);
+  const pageCount = Math.ceil(totalRepos / reposPerPage);
 
   for (let i = 1; i <= pageCount; i++) {
     pageNumbers.push(i);
@@ -16,8 +16,8 @@ const Pagination = (props) => {
         {pageNumbers.map((number) => (
           <NavigationListItem key={number}>
             <NavigationButton
-              active={number === props.currentPage}
-              onClick={() => props.paginate(number)}
+              active={number === currentPage}
+              onClick={() => paginate(number)}
             >
               {number}
             </NavigationButton>
